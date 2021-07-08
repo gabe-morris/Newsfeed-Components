@@ -147,9 +147,9 @@ function articleMaker(artObj){
 
 return article
 }
+data.push({title: 'Creating A New Article!', date:'Jan 10th 2047', firstParagraph:'somethingsomethingsomething', secondParagraph:'somethingsomethingsomething',thirdParagraph:'somethingsomethingsomething'})
 const articleElements = data.map(data => {
   return articleMaker(data)
 })
 articleElements.forEach(elem => articles.appendChild(elem))
 
-console.log(articleElements)
