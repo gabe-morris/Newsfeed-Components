@@ -102,7 +102,7 @@ const data = [
 
     <span class="expandButton">+</span>
   </div>
-
+  
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
 
@@ -114,3 +114,42 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+const articles = document.querySelector('.articles')
+
+function articleMaker(artObj){
+  const article = document.createElement('div')
+  const title = document.createElement('h2')
+  const date = document.createElement('p')
+  const firstPara = document.createElement('p')
+  const secondPara = document.createElement('p')
+  const thirdPara = document.createElement('p')
+  const expand = document.createElement('span')
+
+  article.appendChild(title)
+  article.appendChild(date)
+  article.appendChild(firstPara)
+  article.appendChild(secondPara)
+  article.appendChild(thirdPara)
+  article.appendChild(expand)
+
+  article.classList.add('article')
+  date.classList.add('date')
+  expand.classList.add('expandButton')
+  expand.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+  })
+    expand.textContent = '+'
+    title.textContent = artObj.title
+    date.textContent = artObj.date
+    firstPara.textContent = artObj.firstParagraph
+    secondPara.textContent = artObj.secondParagraph
+    thirdPara.textContent = artObj.thirdParagraph
+
+return article
+}
+data.push({title: 'Creating A New Article!', date:'Jan 10th 2047', firstParagraph:'somethingsomethingsomething', secondParagraph:'somethingsomethingsomething',thirdParagraph:'somethingsomethingsomething'})
+const articleElements = data.map(data => {
+  return articleMaker(data)
+})
+articleElements.forEach(elem => articles.appendChild(elem))
+
